@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "amazonwebservices.aws-toolkit-vscode",
+    "mads-hartmann.bash-ide-vscode",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.vscode-remote-extensionpack",
+    "vscjava.vscode-java-pack",
+    "esbenp.prettier-vscode",
+    "dotdevru.prettier-java",
+    "dbaeumer.vscode-eslint",
+    "bbenoist.nix"
+  ]
+}

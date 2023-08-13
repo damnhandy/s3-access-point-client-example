@@ -1,0 +1,19 @@
+build
+coverage
+*/.gradle/
+*/gradle
+*/gradlew
+*/gradlew.bat
+*/.idea
+.idea
+cdk.out
+springboot-app/bin
+.settings/
+.vscode/
+.husky
+*/vendor/*
+# compiled TS files
+lib/*.js
+bin/*.js
+*.d.ts
+buildspec.yml
