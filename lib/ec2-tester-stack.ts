@@ -34,6 +34,9 @@ export class Ec2TesterStack extends Stack {
     role.addManagedPolicy(ManagedPolicy.fromAwsManagedPolicyName("AmazonSSMManagedInstanceCore"));
     role.addManagedPolicy(ManagedPolicy.fromAwsManagedPolicyName("PowerUserAccess"));
 
+    /**
+     * Permit use of the CMK used to encrypt the source S3 bucket
+     */
     role.addToPolicy(
       new PolicyStatement({
         actions: [
@@ -47,7 +50,9 @@ export class Ec2TesterStack extends Stack {
         effect: Effect.ALLOW
       })
     );
-
+    /**
+     * Allow s3:GetObject actions to the bucket via the access point
+     */
     role.addToPolicy(
       new PolicyStatement({
         actions: ["s3:GetObject*"],
@@ -55,7 +60,16 @@ export class Ec2TesterStack extends Stack {
         effect: Effect.ALLOW
       })
     );
-
+    /**
+     * Allow s3:ListBucket actions to the bucket via the access point
+     */
+    role.addToPolicy(
+      new PolicyStatement({
+        actions: ["s3:ListBucket"],
+        resources: ["arn:aws:s3:us-east-1:226350727888:accesspoint/access-point-799104667460"],
+        effect: Effect.ALLOW
+      })
+    );
     const sg = new SecurityGroup(this, "InstanceSecurityGroup", {
       vpc: vpc,
       allowAllOutbound: false,
